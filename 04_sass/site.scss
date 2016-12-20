@@ -1,0 +1,26 @@
+$primary-bg-color: #FCFCFC;
+$primary-font-color: #000000;
+$highlight-bg-color: #095960;
+
+@import 'header';
+
+body {
+	background-color: $primary-bg-color;
+	color: $primary-font-color;
+}
+
+header, footer {
+	background-color: $primary-font-color;
+	color: $primary-bg-color;
+}
+
+nav ul {
+	display: flex;
+}
+
+#highlights {
+	background-color: $highlight-bg-color;
+	h2 {
+		color: white;
+	}
+}

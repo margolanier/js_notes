@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"> 
+		<link rel="stylesheet" href="style.css">
+		
+		<script type="x-mustache-template" id="pet-template">
+			<h2>Angry Parrot</h2>
+			<p>a description</p>
+			<p><span>some more</span> word things </p>
+		</script>
+		
+		<script type="x-mustache-template" id="creatures-template">
+			<h2>{{ creatureName }}</h2>
+			<p>All {{ creatureName }}s are {{ creatureAdjective }}.</p>
+			<p><span>some more</span> word things </p>
+		</script>
+	</head>
+	
+	<body>
+		<h1>Pet Shoppe</h1>
+		<ul id="creatures"></ul>
+		<ul id="pets"></ul>
+	</body>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+	<script src="app.js"></script>
+</html>

@@ -1,0 +1,17 @@
+body {
+  background-color: #FCFCFC;
+  color: #000000; }
+
+header, footer {
+  background-color: #000000;
+  color: #FCFCFC; }
+
+nav ul {
+  display: flex; }
+
+#highlights {
+  background-color: #095960; }
+  #highlights h2 {
+    color: white; }
+
+/*# sourceMappingURL=site.css.map */

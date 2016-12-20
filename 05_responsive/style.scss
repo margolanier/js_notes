@@ -1,0 +1,66 @@
+/* Import Foundation into my Sass */
+@import 'node_modules/foundation-sites/scss/foundation';
+
+/* In particular, we need 2 modules */
+@include foundation-global-styles;
+@include foundation-grid;
+
+body {
+	background-color: lightblue;
+}
+
+header {
+	/* can use sass mixins to style this element as a row */
+	@include grid-row();
+	
+	> nav, > cart {
+		/* can use sass mixins to style this element as a column
+		in parentheses, provide the number of columns */
+		@include grid-column(6);
+		background-color: lightsalmon;
+	}
+}
+
+section {
+	@include grid-row();
+	
+	h2 {
+		@include grid-column(12);
+	}
+	
+	div {
+		@include grid-column(12);
+		background-color: lightgreen;
+		
+		/* Use media queries to set sm/md/lg col width
+		for foundation, include breakpoint (uses min-width bc mobile-first) */
+		@include breakpoint(600px) {
+			@include grid-column(6);
+			background-color: yellow;
+		}
+	}
+	
+	&.hero {
+		
+	}
+}
+
+.full-width-1 {
+	.testRow {
+		@include grid-row();
+	}
+	background-color: lightcoral;
+}
+
+.full-width-2 {
+	@include grid-column(12);
+	background-color: lightgreen;
+}
+
+footer {
+	@include grid-row();
+	
+	p {
+		@include grid-column(12);
+	}
+}

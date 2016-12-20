@@ -1,0 +1,27 @@
+/* CSS 'rule' contains selecvtors and properties */
+
+/* 3 types of selectors:
+    1. element selector
+    body {
+    
+    2. class selector
+    .class-name {
+    
+    3. id selector
+    #id-name {
+*/
+
+body {
+    background-color: #ffd454;
+    padding: 20px;
+    color: #222;
+}
+
+/* display types:
+1. block = occupy 100% space no matter what
+2. inline = as little space as possible
+3. inline-block = as much space as you tell it to 
+4. flex
+
+box model:
+content > padding > border > margin
