@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Book Store</title>
+		<meta charset="UTF-8"> 
+		<link rel="stylesheet" href="style.css">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js">
+		</script>
+		<script type="x-mustache-template" id="product-template">
+			<img src="{{ bookCover }}" class="book-cover">
+			<div class="book-info">
+				<h2>{{ bookName }}</h2>
+				<p>{{ bookAuthor }}</p>
+				<p>Starting at ${{ bookPrice}}</p>
+				<button>Add to cart</button>
+			</div>
+		</script>
+		
+		<script type="x-mustache-template" id="cart-template">
+			<p>{{ bookName }}: ${{ bookPrice }}</p>
+		</script>
+		
+		<script src="app.js"></script>
+		
+	</head>
+	
+	<body>
+		<header>
+			<h1>Book Store</h1>
+		</header>
+		
+		<main>
+			<section id="products">
+				<h2>Products</h2>
+				<ul></ul>
+			</section>
+			
+			<section id="cart">
+				<h2>Cart</h2>
+				<p>Subtotal: $<span id="cart-subtotal">0.00</span></p>
+				<p>Tax: $<span id="cart-tax">0.00</span></p>
+				<p>Total: $<span id="cart-total">0.00</span></p>
+				<ul></ul>
+			</section>
+		</main>
+		
+	</body>
+</html>
