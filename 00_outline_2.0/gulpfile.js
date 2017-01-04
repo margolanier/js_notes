@@ -5,7 +5,7 @@ let gulp = require('gulp');
 let sass = require('gulp-sass'); // download this npm plugin
 
 // Default Task
-gulp.task('default', ['html', 'css', 'js', 'watch']);
+gulp.task('default', ['html', 'css', 'js']);
 
 // Subtasks
 gulp.task('html', function() {
@@ -29,8 +29,9 @@ gulp.task('js', function() {
 })
 
 // Watch files for changes
-gulp.task('watch', function() {
-	gulp.watch('index.html', ['html']);
+gulp.task('watch', ['default'], function() {
+	// gulp.watch('files-to-watch', 'tasks to run')
+	gulp.watch('*.html', ['html']);
 	gulp.watch('scss/*.scss', ['css']);
     gulp.watch('app.js', ['js']);
 });
