@@ -75,7 +75,7 @@ return nums;*/
 // logs [2.10, 6.41, 10.99]
 
 
-/* REASON TO CHAIN */
+/* CHAINING !!! */
 
 /* shoe store:
  * members get 20% off
@@ -106,3 +106,36 @@ display = display.map(addDollars); */
 
 let display = shoes.map(discount).filter(cheaper).map(addDollars);
 console.log(display);
+
+
+// Use anonymous functions to shorten code
+let people = [
+	{ first: 'Jeb', last: 'Walters', age: 48 },
+	{ first: 'Katy', last: 'Jeeters', age: 58 },
+	{ first: 'Finster', last: 'O Hannigan', age: 18 },
+]
+
+/*function allowed(people, age) {
+	
+	function findOldies(person) {
+		return person.age >= age;
+	}
+	
+	function displayPerson(person) {
+		return person.first + ' ' + person.last;
+	}
+	
+	return people.filter(findOldies).map(displayPerson);
+}*/
+
+// same function written shorter with anonymous functions
+function allowed(people, age) {
+	
+	return people.filter(function(person) {
+		return person.age >= age;
+	}).map(function(person) {
+		return person.first + ' ' + person.last;
+	});
+}
+
+console.log(allowed(people, 58));
