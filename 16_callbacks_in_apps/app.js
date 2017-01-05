@@ -37,8 +37,10 @@ let ajax = {
 		let request = new XMLHttpRequest();
 		request.open('POST', url);
 		let body = JSON.stringify(message);
+		
+		let self = this;
 		request.addEventListener('load', function() {
-			this.get(url, show);
+			self.get(url, show);
 		});
 		request.send(body);
 	},
