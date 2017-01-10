@@ -1,0 +1,13 @@
+.valid {
+	background-color: #A2FA9B;
+	border-color: #8FFD86;
+}
+
+.invalid {
+	background-color: #FE8583;
+	border-color: #FE6E6B;
+}
+
+input[type="text"] {
+	font-size: 1.4em;
+}
