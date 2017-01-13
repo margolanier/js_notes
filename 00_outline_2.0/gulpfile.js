@@ -26,6 +26,7 @@ gulp.task('css', function() {
 gulp.task('js', function() {
 	// copy js file into public/
 	return gulp.src('js/app.js')
+		.pipe(browser.browserify()) // require() local files
 		.pipe(gulp.dest('public/'));
 })
 
