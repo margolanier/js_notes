@@ -1,4 +1,13 @@
+let ajax = require('./ajax');
+let display = require('./render'); 
+
 window.addEventListener('load', function() {
-	let testModule = require(./module); // import module.js
-	console.log('ready');
+	ajax.get('http://pokeapi.co/api/v2/pokemon', show);
 });
+
+function show(response) {
+	let results = response.results;
+	console.log(results);
+	
+	display.show(results);
+}
