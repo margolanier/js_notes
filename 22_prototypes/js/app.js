@@ -85,3 +85,41 @@ window.addEventListener('load', function() {
 		console.log(cart[i].displayText());
 	}
 });
+
+
+/* Stoplight prototype */
+/*
+function Stoplight(color) {
+	this.color = color;
+	
+	return this; // return the new object
+}
+
+// prototypes here
+Stoplight.prototype.green = function() {
+	return this.color === 'green';
+}
+
+Stoplight.prototype.yellow = function() {
+	return this.color === 'yellow';
+}
+
+Stoplight.prototype.red = function() {
+	return this.color === 'red';
+}
+
+Stoplight.prototype.change = function() {
+	if (this.yellow()) {
+		this.color = 'red';
+	} else if (this.red()) {
+		this.color = 'green';
+	} else {
+		this.color = 'yellow';
+	}
+}
+
+window.addEventListener('load', function() {
+	let stoplight = new Stoplight('red');
+	console.log(stoplight);
+});
+*/
