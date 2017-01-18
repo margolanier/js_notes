@@ -1,49 +1,51 @@
-/* Arrow functions */
-
-// ES5
-let nums = [4, 6, 2];
-nums.map(function(num) {
-	return num * num;
-});
-
-// ES6
-let nums = [4, 6, 2];
-nums.map(num => num * num);
-
-
-// ES5
-window.addEventListener('load', function() {
-	
-});
-
-// ES6
-// arrow ftn w no parameters
-window.addEventListener('load', () => console.log('hi');
-	
-});
-
-// arrow ftn w longer body
 window.addEventListener('load', () => {
-	console.log('hi');
-	return hi;
+	getPeeps(showPeeps);
+});
+
+/* Call 'success' once we get peeps */
+function getPeeps(success) {
+	const request = new XMLHttpRequest();
+	request.open('GET', 'https://randomuser.me/api/?results=50');
+	request.addEventListener('load', () => {
+		const {results} = JSON.parse(request.responseText);
+		// console.log(results);
+		
+		// if you want to use make variable named 'data' using the results property
+		// const {results: data} = JSON.parse(request.responseText);
+		// console.log(data);
+		
+		// console.log(results.map(person => person.email));
+		
+		// convert the complex person object into a simpler one
+		// create a Peep constructor
+		const peeps = results.map(person => new Peep(person));
+		success(peeps);
+	});
+	request.send();
 }
 
-// if you have multiple parameters, you need parentheses around them
-window.addEventListener('load', (param1, param2) => console.log('hi');
-
-/* Template Literals */
-function greet(tidings, name) {
-	// console.log(tidings + ', fair ' + name); // ES5
-	console.log(`${tidings}, fair ${name}`); // ES6
+function Peep(raw) {
+	this.name = `${raw.name.first} ${raw.name.last}`;
+	this.location = `${raw.location.city}, ${raw.location.state}`;
+	this.image = raw.picture.medium;
+	
+	return this;
 }
-greet('Good morrow', 'Jacqueline');
 
-
-/* Template Literals */
-function greet(tidings, name) {
-	// console.log(tidings + ', fair ' + name); // ES5
-	console.log(`${tidings}, fair ${name}`); // ES6
-}
-greet('Good morrow', 'Jacqueline');
-
-let greet = (tidings, name = 'Margo') => `${tidings}, fair ${name}`);
+const showPeeps = peeplist => {
+	// console.log(peeplist);
+	const parent = document.querySelector('#peeps');
+	
+	// clear list of all peeps in the DOM
+	parent.innerHTML = '';
+	
+	// re-render all peeps in peeplist
+	peeplist.forEach(peep => {
+		const li = document.createElement('li');
+		li.innerHTML = Mustache.render(
+			document.querySelector('#peeps-template').innerHTML,
+			peep // the current item from the array
+		);
+		parent.appendChild(li);
+	});
+};
