@@ -13,8 +13,11 @@ let IngredientsModel = Backbone.Model.extend({
 		 */
 		
 		// increase the number of peas by 1
+		// max 115 (validation happens in model)
 		// this.peas = this.peas + 1;
-		this.set('peas', this.get('peas') + 1); 
+		if (this.get('peas') < 115) {
+			this.set('peas', this.get('peas') + 1); 
+		}
 	}
 });
 
