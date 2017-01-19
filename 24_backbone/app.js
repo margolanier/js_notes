@@ -5,7 +5,7 @@ let IngredientsModel = Backbone.Model.extend({
 		peas: 100,
 	},
 	
-	increasePeas: function() {
+	increasePeas() {
 		/*
 		 * Functions built into Backbone: this.get, this.set
 		 * this.get('peas'); => gets the value of 'peas'
@@ -21,7 +21,7 @@ let IngredientsModel = Backbone.Model.extend({
 /* 2) Decide how to display & interact with the model */
 let IngredientView = Backbone.View.extend({
 	
-	initialize: function() { // what happens on init
+	initialize() { // what happens on init
 		this.model.on('change', this.render, this); // third parameter 'this' is for bind()
 	},
 	
@@ -30,7 +30,7 @@ let IngredientView = Backbone.View.extend({
 		'click #more-peas' : 'addPea',
 	},
 	
-	addPea: function () { // event handler
+	addPea() { // event handler
 		console.log('peas, love em');
 		/*
 		 * 1) Let the MODEL handle the 'increasePeas' function
@@ -42,13 +42,13 @@ let IngredientView = Backbone.View.extend({
 		this.model.increasePeas();
 	},
 	
-	render: function() {
+	render() {
 		let button = this.el.querySelector('#more-peas');
 		button.textContent = this.model.get('peas');
 	},
 });
 
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
 	let ingredients = new IngredientsModel();
 	
 	let mainView = new IngredientView({
