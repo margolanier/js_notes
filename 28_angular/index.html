@@ -9,7 +9,8 @@
 
 <!-- New attributes in Angular called 'directives' -->
 <body ng-app="HairApp">
-    <h1>Salt Bae's Hair Salon</h1>
+    <h1>Learning Angular, as told by:<br>
+	<span class="sparkle">Salt Bae's Hair Salon</span></h1>
 	
 	<!-- Set up new template view and define the controller scope -->
     <section ng-controller="OwnerController">
@@ -31,27 +32,34 @@
 		<input type="text" ng-model="clientName" placeholder="Full Name">
 		
 		<h2>Salon Services</h2>
-		<input type="text" ng-model="hair" placeholder="Which pet?">
-        <button ng-click="newPet()">Add your pet</button>
+		<!-- Update list IRL as user adds requests below -->
+		<!-- For each task (item) in $scope.tasks array, create li and display -->
         <ul>
-            <!-- 
-                Loop over all of the items in $scope.pets, and
-                each will be called 'oneOfEm' during the loop.
-
-                'in' is required - its saying we want a for loop
-                here over the $scope.pets array. the current element 
-                during the loop will be called 'oneofEm'.
-            -->
-            <li ng-repeat="oneOfEm in pets">
-                {{ oneOfEm }}
-                <!-- 
-                    Angular creates $index for us when we're inside 
-                    of an ng-repeat (for loop). 
-                -->
-                <button ng-click="remove($index)">remove</button>
-            </li>
-        </ul>
-    </section>
+			<li ng-repeat="task in tasks">
+				{{ task }}
+				<!-- Angular creates $index for each item in ng-repeat -->
+            	<button ng-click="remove($index)">remove</button>
+			</li>
+		</ul>
+		
+		<!-- METHOD 1 -->
+		<p>Method 1</p>
+		
+		<!-- User adds request to list from a set selection of buttons -->
+		<button ng-click="addRequest('dye hair')">Dye it purple</button><br>
+		<button ng-click="addRequest('curl hair')">Get some curls up in this bitch</button><br>
+		
+		<!-- User adds a custom request by typing in textbox -->
+		<input type="text" ng-model="clientRequest" placeholder="Hair things, plz">
+        <button ng-click="addRequest(clientRequest)">Request</button>
+		
+		
+		<!-- METHOD 2 -->
+		<hr><p>Method 2</p>
+		<input type="text" ng-model="clientRequest2" placeholder="Hair things, plz">
+        <button ng-click="addRequest2()">Request</button>
+		
+	</section>
 </body>
 
 </html>
