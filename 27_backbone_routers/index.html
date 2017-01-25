@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8"> 
+		<link rel="stylesheet" href="style.css">
+		
+		<script src="http://underscorejs.org/underscore.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<script src="http://backbonejs.org/backbone.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+		<script type="x-mustache-template" id="event-list-template">
+			<h3><a gref="details/{{ id }}>{{ name }}</a></h3>
+			<p>Date: {{ date }}</p>
+			<p>Attendees: {{ attendees }}</p>
+			<button class="remove">Remove</button>
+		</script>
+		<script type="x-mustache-template" id="event-detail-template">
+			<h3>{{ name }}</h3>
+			<p>Date: {{ date }}</p>
+			<p>Attendees: {{ attendees }} people</p>
+			<p><a href="#list">Back</a></p>
+		</script>
+		<script src="app.js"></script>
+		
+	</head>
+	
+	<body>
+		<h1>Events App</h1>
+		<nav>
+			<ul>
+				<li><a href="#create">Create New Event</a></li>
+            	<li><a href="#list">View Upcoming Events</a></li>
+			</ul>
+		</nav>
+		
+		<section id="event-add">
+			<h2>Create an Event</h2>
+			<input type="text" id="name" placeholder="Host an event">
+			<button id="go">Announce</button>
+		</section>
+		
+		<section id="event-list">
+			<h2>Upcoming Events</h2>
+			<ul></ul>
+		</section>
+		
+		<section id="event-detail">
+			<h2>Event Details</h2>
+		</section>
+	</body>
+</html>
