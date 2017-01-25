@@ -1,8 +1,8 @@
 const EventModel = require('./event');
 
 // Add an id to each event so that you can pass it in the router
-// Event detail page will be url.com/#details/{id}
-let nextId;
+// Event detail page will be url.com/details/{id}
+let nextId = 0;
 
 module.exports = Backbone.Collection.extend({
 	model: EventModel,

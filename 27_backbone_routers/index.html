@@ -11,16 +11,16 @@
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 		<script type="x-mustache-template" id="event-list-template">
-			<h3><a gref="details/{{ id }}>{{ name }}</a></h3>
-			<p>Date: {{ date }}</p>
-			<p>Attendees: {{ attendees }}</p>
-			<button class="remove">Remove</button>
+			<h3><a href="details/{{ id }}">{{ name }}</a></h3>
+			<p>Date: {{ date }}
+			<br>Attendees: {{ attendees }}
+			<br><button class="remove">Remove</button></p>
 		</script>
 		<script type="x-mustache-template" id="event-detail-template">
 			<h3>{{ name }}</h3>
-			<p>Date: {{ date }}</p>
-			<p>Attendees: {{ attendees }} people</p>
-			<p><a href="#list">Back</a></p>
+			<p>Date: {{ date }}
+			<br>Attendees: {{ attendees }} people
+			<br><a href="#list">Back</a></p>
 		</script>
 		<script src="app.js"></script>
 		

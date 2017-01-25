@@ -17,7 +17,7 @@ module.exports = Backbone.View.extend({
 		
 		// Clear the existing event list before re-rendering
         // Only need to select <ul> bc the only <ul> in the event list view
-        this.el.querySelector('ul').innerHTML = '';
+        parent.innerHTML = '';
 		
         for (let i = 0; i < this.model.models.length; i++) {
         	const event = this.model.models[i];
@@ -41,7 +41,7 @@ module.exports = Backbone.View.extend({
 				 * Built-in to Backbone
 				 * Every collection has a remove() property
 				 */
-				console.log('removed ' + event.get('name'));
+				// console.log('removed ' + event.get('name'));
                 this.model.remove(event);
             });
 			

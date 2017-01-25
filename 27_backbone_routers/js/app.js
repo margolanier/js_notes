@@ -32,10 +32,22 @@ window.addEventListener('load', () => {
 		model: list,
 	});*/
 	
+	// Add some default events
+	list.addEvent('Beer Festival');
+    list.addEvent('Art Crawl');
+    list.addEvent('Dodgeball Tournament');
+	
 	// Create router and pass in all the views created above
 	const app = new AppRouter({
         add: addView,
         list: listView,
         detail: detailView,
     });
+	
+	Backbone.history.start();
+	/*
+	 * Tells browser to count changes in url fragments (url.com/#fragment)
+	 * as different 'page visits'
+	 * Historically, pressing the back button would ignore those views
+	 */
 });
