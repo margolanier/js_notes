@@ -49,15 +49,23 @@ app.controller('ShowBooksController', function ($scope, BookService) {
 });
 
 // Factories always return services
-app.factory('BookService', function () {
-    // Great example of a closure
+app.factory('BookService', function($http) {
+	
+    // Services work because of JS closures:
 	// books is preserved throughout the lifetime of our app
     const books = [];
-
-    books.push(new Book('test book', 'famous author', 17.89));
-    books.push(new Book('test book 2', 'another person', 17.89));
-    books.push(new Book('little-known masterpiece', 'a nobody', 17.89));
-
+	
+	// Promises are a JS pattern to organize asynchronous operations (event-based things)
+	// Instead of lots of callbacks, set the order using then()
+	// 'data' is an angular thing?
+	$http.get('http://api.queencityiron.com/books').then(function(response) {
+		const incoming = response.data.books;
+		
+		for(let i=0; i<incoming.length; i++) {
+			books.push(incoming[i]);
+		}
+	});
+	
     return {
         // ES6 syntax for function property
         add(book) {
