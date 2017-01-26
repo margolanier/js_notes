@@ -34,9 +34,10 @@
             <li ng-class="{ favorite: currentBook.isFavorite }" ng-repeat="currentBook in books">
                 <h3>{{ currentBook.title }}</h3>
                 <p>Written by {{ currentBook.author }}</p>
+				<img ng-src="{{ currentBook.cover }}">
                 <!-- ng-show shows something when the condition is true -->
                 <!-- ng-hide hides something when the condition is true -->
-                <p ng-show="currentBook.isFavorite">I LIKE THIS</p>
+                <p ng-show="currentBook.isFavorite">FAVORITED</p>
                <button ng-hide="currentBook.isFavorite" ng-click="favoriteBook(currentBook)">Mark as favorite</button>
             </li>
         </ul>

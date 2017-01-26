@@ -51,31 +51,45 @@ app.controller('ShowBooksController', function ($scope, BookService) {
 // Factories always return services
 app.factory('BookService', function($http) {
 	
-    // Services work because of JS closures:
-	// books is preserved throughout the lifetime of our app
+    // Services work because of JS closures: books is preserved throughout lifetime of app
     const books = [];
 	
-	// Promises are a JS pattern to organize asynchronous operations (event-based things)
-	// Instead of lots of callbacks, set the order using then()
-	// 'data' is an angular thing?
+	/*
+	 * Promises are a JS pattern to organize asynchronous operations (event-based things)
+	 * Instead of lots of callbacks, set the order using then()
+	 * 'data' is Angular-specific (returns object with extra info, including http response)
+	 */
+	
+	// GET requests
 	$http.get('http://api.queencityiron.com/books').then(function(response) {
-		const incoming = response.data.books;
 		
-		for(let i=0; i<incoming.length; i++) {
-			books.push(incoming[i]);
-		}
+		angular.copy(response.data.books, books);
+		// the 'angular.copy' function above replaces loop below
+		/*
+			const incoming = response.data.books;
+			for(let i=0; i<incoming.length; i++) {
+				books.push(incoming[i]);
+			}
+		*/
+		
 	});
 	
     return {
         // ES6 syntax for function property
         add(book) {
             books.push(book);
+			
+			// POST requests: sencond arg is data for the body
+			$http.post('http://api.queencityiron.com/books', {
+				title: book.title,
+				author: book.author,
+			});
         },
         getAll() {
             return books;
         },
-        markAsFavorite(goodie) {
-            goodie.isFavorite = true;
+        markAsFavorite(fave) {
+            fave.isFavorite = true;
         },
     };
 });
