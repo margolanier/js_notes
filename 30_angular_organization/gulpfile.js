@@ -10,6 +10,9 @@ gulp.task('default', ['html', 'css', 'js']);
 
 // Subtasks
 gulp.task('html', function() {
+	gulp.src('templates/*.html')
+		.pipe(gulp.dest('public/templates'));
+	
 	// copy index.html into the public/ directory
 	return gulp.src('index.html')
 		.pipe(gulp.dest('public/'));
@@ -34,6 +37,7 @@ gulp.task('js', function() {
 gulp.task('watch', ['default'], function() {
 	// gulp.watch('files-to-watch', 'tasks to run')
 	gulp.watch('*.html', ['html']);
+	gulp.watch('templates/*.html', ['html']);
 	gulp.watch('scss/*.scss', ['css']);
     gulp.watch('js/*.js', ['js']);
 	gulp.watch('js/*/*.js', ['js']);

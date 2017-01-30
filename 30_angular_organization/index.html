@@ -8,21 +8,27 @@
 </head>
 
 <body ng-app="SnaxApp">
-    <h1>Snax</h1>
+    <h1>Snax App</h1>
     
-	<section ng-controller="SnackListController">
+	<section ng-controller="SnackListController" id="vending-machine">
+		<h2>Snacks</h2>
 		<ul>
 			<li ng-repeat="snack in snacks">
 				<h2>{{snack.name}}</h2>
 				<p>Available: {{snack.count}}</p>
 				<p>Price: {{snack.price}}</p>
-				<button ng-show="snack.count > 0" ng-click="buy(snack)">Add to receipt</button>
-				<button disabled ng-show="snack.count === 0">Out of stock</button>
+				
+				<!-- Add a 'binding' here called whatever you want (xyz)-->
+				<!-- This lets you access the 'snack' object in the component file -->
+				<snack-button xyz="snack" tappedOn="buy"></snack-button>
+				<!--<button ng-show="snack.count > 0" ng-click="buy(snack)">Add to receipt</button>
+				<button disabled ng-show="snack.count === 0">Out of stock</button>-->
 			</li>
 		</ul>
     </section>
 	
-	<section ng-controller="ReceiptListController">
+	<section ng-controller="ReceiptListController" id="cart">
+		<h2>Receipt</h2>
     </section>
 </body>
 

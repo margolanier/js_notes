@@ -5,4 +5,19 @@
 
 button {
 	@include button;
+	&:disabled {
+		opacity: 0.6;
+	}
+}
+
+body {
+	@include grid-row();
+}
+
+#vending-machine {
+	@include grid-column(8);
+}
+
+#cart {
+	@include grid-column(4);
 }
