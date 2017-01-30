@@ -68,6 +68,7 @@ app.factory('BookService', function($http) {
 		/*
 			const incoming = response.data.books;
 			for(let i=0; i<incoming.length; i++) {
+				// should use the constructor here
 				books.push(incoming[i]);
 			}
 		*/
