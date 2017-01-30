@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Learning Angular</title>
+	<link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="SnaxApp">
+    <h1>Snax</h1>
+    
+	<section ng-controller="SnackListController">
+		<ul>
+			<li ng-repeat="snack in snacks">
+				<h2>{{snack.name}}</h2>
+				<p>Available: {{snack.count}}</p>
+				<p>Price: {{snack.price}}</p>
+				<button ng-show="snack.count > 0" ng-click="buy(snack)">Add to receipt</button>
+				<button disabled ng-show="snack.count === 0">Out of stock</button>
+			</li>
+		</ul>
+    </section>
+	
+	<section ng-controller="ReceiptListController">
+    </section>
+</body>
+
+</html>
