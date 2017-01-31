@@ -34,13 +34,13 @@ app.component('snackButton', { // camelCase in component converts to kabob-case 
 	// Declare the inputs to this component
 	bindings: {
 		xyz: '<', // <= the type of binding
-		tappedOn: '@',
+		clickedOn: '&',
 	},
 	/*
 	 * Types of bindings
 	 * 1. '<' means one-way binding (components CANNOT CHANGE the value) // read-only
 	 * 2. '=' means two-way binding (components CAN CHANGE the value) // read-write
-	 * 3. '@' means you are passing in a function
+	 * 3. '&' means you are passing in a function
 	*/
 	
 	//controller: 'SnackButtonController',
