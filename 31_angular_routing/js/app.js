@@ -1,3 +1,15 @@
+/*
+ * ROUTING
+ * 1. Set up the routes
+ *		- Add ui router as an app dependency
+ *		- Create the states in app.config
+ * 2. Direct users to the route
+ *		- Link between the states with ui-sref links
+ * 3. Get the route data back to use
+ *		- When you want to access the parameters, use $stateParams
+ */
+
+
 // Add router to the dependencies list
 // Load ui router before loading the app
 const app = angular.module('FriendApp', ['ui.router']);
@@ -27,17 +39,21 @@ app.config(function($stateProvider) {
 
 app.controller('ListController', function($scope, FriendsService) {
 	$scope.friends = FriendsService.getFriends();
+	
+	$scope.greet = function(person) {
+		console.log(`Hello ${ person.name }`);
+	}
 });
 
 // $stateParams = parameters provided by ui-router
 // Use to access the parameters for that state (url: '/details/:person_id')
-app.controller('DetailsController', function($stateParams) {
-	// Need to parseInt, these params are strings by default
-	const id = $stateParams.person_id;
+app.controller('DetailsController', function($scope, $stateParams, FriendsService) {
+	// Need to parseInt bc you are grabbing part of the string url param set above
+	const id = parseInt($stateParams.person_id);
 	$scope.person = FriendsService.getPerson(id);
 });
 
-// Defining a component
+// Defining components
 app.component('friendList', {
 	controller: 'ListController',
 	templateUrl: 'templates/list.html',
@@ -46,6 +62,15 @@ app.component('friendList', {
 app.component('friendDetails', {
 	controller: 'DetailsController',
 	templateUrl: 'templates/details.html',
+});
+
+app.component('friendSummary', {
+	// don't need a controller here, not modifying anything
+	templateUrl: 'templates/summary.html',
+	bindings: {
+		person: '<', // read-only
+		whenIClick: '&', // function
+	},
 });
 
 app.factory('FriendsService', function() {
@@ -60,7 +85,9 @@ app.factory('FriendsService', function() {
 			return friends;
 		},
 		getPerson(id) {
-			return friends[parseInt(id)];
-		}
+			return friends.find(function(friend) {
+				return friend.id === id;
+			});
+		},
 	};
 });
