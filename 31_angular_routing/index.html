@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>Angular</title>
+	<link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="FriendApp">
+	<h1>Friend App</h1>
+	
+	<nav>
+		<ul>
+			<!--<li><a href="">List of people</a></li>-->
+			<!-- instead of href (hypertext ref) => use ui-sref (state ref) -->
+			<li><a ui-sref="list-em-all">List of people</a></li>
+			<li><a ui-sref="show-details">Details</a></li>
+		</ul>
+	</nav>
+	
+	<!-- Show the current state's corresponding view -->
+	<!-- ui-view replaces both views (friend-list and friend-details) -->
+	<ui-view></ui-view>
+	
+	<!-- The friend-list component replaces the section controller -->
+	<!-- section controller content moves to component html template -->
+	<!--<friend-list></friend-list>-->
+	
+	<!--<friend-details></friend-details>-->
+	
+	<footer>do footer things here</footer>
+</body>
+
+</html>

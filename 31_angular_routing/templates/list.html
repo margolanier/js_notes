@@ -1,0 +1,10 @@
+<section ng-controller="ListController">
+	<h2>Potentially Friendly People</h2>
+	
+	<ul>
+		<li ng-repeat="friend in friends">
+			<!-- person_id is the variable your give you the state url '/details/:person_id' -->
+			<p><a ui-sref="show-details({ person_id: friend.id })">{{ friend.name }}</a></p>
+		</li>
+	</ul>
+</section>
