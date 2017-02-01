@@ -14,7 +14,7 @@ Use a webserver to use Angular components
 Only need to serve the public folder
 
 	npm install -g serve
-	serve public
+	serve public // or 'server public -c 0' to prevent caching
 
 Then use http://localhost:3000 (or whatever port is defined) to check your changes instead of index.html
 
